@@ -1,0 +1,23 @@
+@model act1.Models.Usuario
+@{
+    ViewData["Title"] = "Eliminar usuario";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>¿Seguro que deseas eliminar este usuario?</h3>
+
+<dl class="row">
+    <dt class="col-sm-2">Usuario</dt>
+    <dd class="col-sm-10">@Model.Username</dd>
+
+    <dt class="col-sm-2">Rol</dt>
+    <dd class="col-sm-10">@Model.Rol?.Nombre</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="UsuarioId" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
